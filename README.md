@@ -49,8 +49,8 @@ javac -version
 <br />     
 <br />
 For large dataset you might encounter java heap space error: <br />
-Append the following line to the bashrc file, <br />
-```java
+Append the following line to the bashrc file: <br />
+```bash
 java -Xmx{any number without braces}g   # Xmx54g - allocates 54GB of heap space
 ```
 <br />
@@ -58,20 +58,20 @@ java -Xmx{any number without braces}g   # Xmx54g - allocates 54GB of heap space
 For larger files you may encounter spacy memory error: <br />
 after loading nlp from spacy, include in the script <br />
 ```python
-nlp.max_length = 10000000              # any number > 1000000 <br />
+nlp.max_length = 10000000              # any number > 1000000
 ```
 <br />
 Dependency installation: <br />
 ```bash 
-pip3 install numpy <br />
-pip3 install pandas <br />
-pip3 install nltk <br />
-pip3 install gensim <br />
-pip3 install pyLDAvis <br />
-pip3 install spacy <br />
-pip3 install matplotlib <br />
-pip3 install tika <br />
-pip3 install ipdb <br />
+pip3 install numpy 
+pip3 install pandas 
+pip3 install nltk 
+pip3 install gensim 
+pip3 install pyLDAvis 
+pip3 install spacy 
+pip3 install matplotlib 
+pip3 install tika 
+pip3 install ipdb
 ```
 <br />
 <br />
