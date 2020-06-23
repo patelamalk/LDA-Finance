@@ -32,10 +32,16 @@ Text_Filings.zip <br />
     +-- 1000_10K.txt <br />
 <br />
 <br />
-Platform: Debian 10 / Any Linux Distro  <br />
+### Platform: 
+``` bash 
+Debian 10 / Any Linux Distro  <br />
+```
 <br />
 <br />
-Python version: python 3.7.3  <br />
+### Python version: 
+``` bash
+python 3.7.3
+```
 <br />
 <br />
 ### Java installation: <br />
