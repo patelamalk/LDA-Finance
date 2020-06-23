@@ -34,12 +34,12 @@ Text_Filings.zip <br />
 <br />
 ### Platform: 
 ``` bash 
-Debian 10 / Any Linux Distro  <br />
+Debian 10 / Any Linux Distro
 ```
 <br />
 <br />
 ### Python version: 
-``` bash
+``` python
 python 3.7.3
 ```
 <br />
