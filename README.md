@@ -51,7 +51,7 @@ javac -version
 For large dataset you might encounter java heap space error: <br />
 Append the following line to the bashrc file, <br />
 ```bash
-java -Xmx{any number without braces}g   # Xmx54g - allocates 54GB of heap space <br />
+java -Xmx{any number without braces}g   # Xmx54g - allocates 54GB of heap space
 ```
 <br />
 <br /> 
