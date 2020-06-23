@@ -38,7 +38,7 @@ Platform: Debian 10 / Any Linux Distro  <br />
 Python version: python 3.7.3  <br />
 <br />
 <br />
-Java installation: <br />
+### Java installation: <br />
 ```bash 
 sudo apt update
 sudo apt install default-jre
@@ -48,21 +48,21 @@ javac -version
 ```
 <br />     
 <br />
-For large dataset you might encounter java heap space error: <br />
+### For large dataset you might encounter java heap space error: <br />
 Append the following line to the bashrc file: <br />
 ```bash
 java -Xmx{any number without braces}g   # Xmx54g - allocates 54GB of heap space
 ```
 <br />
 <br /> 
-For larger files you may encounter spacy memory error: <br />
+### For larger files you may encounter spacy memory error: <br />
 after loading nlp from spacy, include in the script <br />
 ```python
 nlp.max_length = 10000000              # any number > 1000000
 ```
 <br />
-Dependency installation: <br />
-```bash 
+### Dependency installation: <br />
+``` bash 
 pip3 install numpy 
 pip3 install pandas 
 pip3 install nltk 
