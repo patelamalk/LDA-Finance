@@ -1,2 +1,98 @@
 # LDA_Finance
 Applying LDA to create a metric for financial innovation in financial companies. 
+
+Folder structure is:
+    +-- LDA_Finance/
+        +-- utils/
+            +-- unpack_data.sh
+            +-- monitor_memory.sh
+            +-- mallet_installation.sh
+            +-- mallet_installation.py
+        +-- scripts/
+            +-- preprocess.py
+            +-- lda_multicore_model.py
+            +-- divergence.py
+        +-- lemmatized_data/
+            +--
+            +-- 
+        +-- data/
+            +-- 1_10K.txt
+            +-- ..
+            +-- ..
+            +-- 1000_10K.txt
+        +-- Text_Filings.zip
+        +-- README.md
+        
+
+Dataset structure: 
+Text_Filings.zip
+    +-- 1_10K.txt
+    +-- ..
+    +-- ..
+    +-- 1000_10K.txt
+
+
+Platform: Debian 10 / Any Linux Distro 
+
+
+Python version: python 3.7.3 
+
+
+Java installation:
+sudo apt update
+sudo apt install default-jre
+java -version
+sudo apt install default-jdk
+javac -version
+    
+
+For large dataset you might encounter java heap space error:
+Append the following line to the bashrc file,
+java -Xmx{any number without braces}g   # Xmx54g - allocates 54GB of heap space
+
+
+For larger files you may encounter spacy memory error:
+after loading nlp from spacy, include in the script
+nlp.max_length = 10000000              # any number > 1000000
+ 
+Dependency installation:
+pip3 install numpy
+pip3 install pandas
+pip3 install nltk
+pip3 install gensim
+pip3 install pyLDAvis
+pip3 install spacy
+pip3 install matplotlib
+pip3 install tika
+pip3 install ipdb
+
+
+Script usage: LDA_Finance/              # home dir
+
+********* Execute command in terminal ************
+mkdir lemmatized_data                   # Skip this command if the directory exists
+mv utils
+bash unpack_data.sh                     # creates data dir and unzips the dataset there
+bash mallet_installation.sh             # downloads mallet and unzips it
+**************************************************
+
+
+**************** Preprocess **********************
+python3 preprocess_data.py --datadir=/path/to/dir/ --lemmatized_data_dir=/path/to/lemmatized_data
+**************************************************
+# Pass the whole path including home, example below
+# python3 preprocess_data.py --data_dir=/home/patelamal_01/LDA_repo/LDA_Finance/data --lemmatized_data_dir=/home/patelamal_01/LDA_repo/LDA_Finance/lemmatized_data
+
+
+***************** LDA Model **********************
+mkdir model                             # Skip this step if the directory exists
+
+python3 LDAMulticoreModel.py --model_name=ModelName --save_model_path=/path/to/save/model/ --lemmatized_data_path=/path/to/processed/lemmatized/data
+**************************************************
+# Pass the whole path including home, example below
+# python3 LDAMulticoreModel.py --model_name=LDA_MC_1 --save_model_path=/home/patelamal_01/LDA_repo/LDA_Finance/model/ --lemmatized_data_path=/home/patelamal_01/LDA_repo/LDA_Finance/lemmatized_data/
+
+
+********** Analysis and Divergence ***************
+
+**************************************************
