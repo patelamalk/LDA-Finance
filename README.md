@@ -84,10 +84,10 @@ Pass the whole path including home, example below:
 ```
 
 ##### Authors:
-[Dr. Anand Goel](http://www.anandgoel.org/)
-[Amal Patel](https://www.linkedin.com/in/patelamalk/)
+[Dr. Anand Goel](http://www.anandgoel.org/)     <br />
+[Amal Patel](https://www.linkedin.com/in/patelamalk/)   <br />   
 
 ##### Useful links:
-[Gensim Tutorials](https://radimrehurek.com/gensim/auto_examples/index.html)
-[Topic Modeling with Gensim](https://www.machinelearningplus.com/nlp/topic-modeling-gensim-python/#1introduction)
-[Topic Modeling with mallet](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet)
+[Gensim Tutorials](https://radimrehurek.com/gensim/auto_examples/index.html) <br />
+[Topic Modeling with Gensim](https://www.machinelearningplus.com/nlp/topic-modeling-gensim-python/#1introduction)  <br />
+[Topic Modeling with mallet](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet) <br />
