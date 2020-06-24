@@ -1,50 +1,16 @@
 # LDA_Finance
-Applying LDA to create a metric for financial innovation in financial companies. 
-<br />
-Folder structure is: <br />
-+-- LDA_Finance/ <br />
-&nbsp;&nbsp;&nbsp;+-- utils/ <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- unpack_data.sh <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- monitor_memory.sh <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- mallet_installation.sh <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- mallet_installation.py <br />
-&nbsp;&nbsp;&nbsp;+-- scripts/ <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- preprocess.py <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- lda_multicore_model.py <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- divergence.py <br />
-&nbsp;&nbsp;&nbsp;+-- lemmatized_data/ <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--  <br />
-&nbsp;&nbsp;&nbsp;+-- data/ <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- 1_10K.txt <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- .. <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- .. <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+-- 1000_10K.txt <br />
-&nbsp;&nbsp;&nbsp;+-- Text_Filings.zip <br />
-&nbsp;&nbsp;&nbsp;+-- README.md <br />
-<br />
-<br />
-Dataset structure: <br />
-Text_Filings.zip <br />
-    +-- 1_10K.txt <br />
-    +-- .. <br />
-    +-- .. <br />
-    +-- 1000_10K.txt <br />
-<br />
-<br />
-### Platform: 
+#### Text based analysis of Financial Innovation.
+##### Platform: 
 ``` bash 
-Debian 10 / Any Linux Distro
+Debian 10
 ```
-<br />
-<br />
-### Python version: 
+
+##### Python version: 
 ``` python
 python 3.7.3
 ```
-<br />
-<br />
-### Java installation: <br />
+
+##### Java installation:
 ```bash 
 sudo apt update
 sudo apt install default-jre
@@ -52,22 +18,20 @@ java -version
 sudo apt install default-jdk
 javac -version
 ```
-<br />     
-<br />
-### For large dataset you might encounter java heap space error: <br />
-Append the following line to the bashrc file: <br />
+
+##### For large dataset you might encounter java heap space error:
+Append the following line to the bashrc file
 ```bash
 java -Xmx{any number without braces}g   # Xmx54g - allocates 54GB of heap space
 ```
-<br />
-<br /> 
-### For larger files you may encounter spacy memory error: <br />
-after loading nlp from spacy, include in the script <br />
+
+##### For larger files you may encounter spacy memory error:
+After loading nlp from spacy, include max_length in the script
 ```python
 nlp.max_length = 10000000              # any number > 1000000
 ```
-<br />
-### Dependency installation: <br />
+
+##### Dependency installation:
 ``` bash 
 pip3 install numpy 
 pip3 install pandas 
@@ -79,40 +43,51 @@ pip3 install matplotlib
 pip3 install tika 
 pip3 install ipdb
 ```
-<br />
-<br />
-Script usage: LDA_Finance/              # home dir <br />
-<br />
-********* Execute command in terminal ************ <br />
+##### ***** Have the same directory structure as this repo *****
+##### Script usage:
+Home dir:
+```sh
+cd LDA_Finance/
+```
+
 ```bash 
-mkdir lemmatized_data                   # Skip this command if the directory exists 
 mv utils
 bash unpack_data.sh                     # creates data dir and unzips the dataset there 
 bash mallet_installation.sh             # downloads mallet and unzips it 
 ```
-************************************************** <br />
-<br />
-<br /> 
-**************** Preprocess ********************** <br />
-```bash 
-python3 preprocess_data.py --datadir=/path/to/dir/ --lemmatized_data_dir=/path/to/lemmatized_data
-```
-************************************************** <br />
-# Pass the whole path including home, example below <br />
-# python3 preprocess_data.py --data_dir=/home/patelamal_01/LDA_repo/LDA_Finance/data -lemmatized_data_dir=/home/patelamal_01/LDA_repo/LDA_Finance/lemmatized_data <br />
-<br />
-<br />
-***************** LDA Model ********************** <br />
-```bash
-mkdir model                             # Skip this step if the directory exists <br />
-<br />
-python3 LDAMulticoreModel.py --model_name=ModelName --save_model_path=/path/to/save/model/ --lemmatized_data_path=/path/to/processed/lemmatized/data <br />
-```
-************************************************** <br />
-# Pass the whole path including home, example below <br />
-# python3 LDAMulticoreModel.py --model_name=LDA_MC_1 --save_model_path=/home/patelamal_01/LDA_repo/LDA_Finance/model/ --lemmatized_data_path=/home/patelamal_01/LDA_repo/LDA_Finance/lemmatized_data/ <br />
-<br />
-<br />
-********** Analysis and Divergence *************** <br />
 
-************************************************** <br />
+Preprocess Data:
+```bash 
+python3 preprocess_data.py --datadir=/path/to/dir/ --lemmatized_data_dir=/path/to/lemmatized_data --book_path=/path/to/book.pdf
+```
+Pass the whole path including home, example below:
+```python
+# python3 preprocess_data.py --data_dir=/home/patelamal_01/LDA_repo/LDA_Finance/data --lemmatized_data_dir=/home/patelamal_01/LDA_repo/LDA_Finance/lemmatized_data --book_path=/home/patelamal_01/LDA_repo/LDA_Finance/Tidd_Innovation.pdf
+```
+
+LDA Model:
+```sh
+python3 LDAMulticoreModel.py --model_name=ModelName --save_model_path=/path/to/save/model/ --lemmatized_data_path=/path/to/processed/lemmatized/data
+```
+Pass the whole path including home, example below:
+```python
+# python3 LDAMulticoreModel.py --model_name=LDA_MC_1 --save_model_path=/home/patelamal_01/LDA_repo/LDA_Finance/model/ --lemmatized_data_path=/home/patelamal_01/LDA_repo/LDA_Finance/lemmatized_data/
+```
+
+Analysis & Divergence:
+```sh
+python3 Analysis_Divergence.py --model_path=/path/to/model/modelname --lemmatized_data_path=/path/to/lemmatized/data/ --prob_file_path=/path/to/save/prob/csv/
+```
+Pass the whole path including home, example below:
+```python
+# python3 Analysis_Divergence.py --model_path=/home/patelamal_01/LDA_repo/LDA_Finance/model/LDA_MC_1/LDA_MC_1 --lemmatized_data_path=/home/patelamal_01/LDA_repo/LDA_Finance/lemmatized_data/ --prob_file_path=/home/patelamal_01/LDA_repo/LDA_Finance/probability/
+```
+
+##### Authors:
+[Dr. Anand Goel](http://www.anandgoel.org/)
+[Amal Patel](https://www.linkedin.com/in/patelamalk/)
+
+##### Useful links:
+[Gensim Tutorials](https://radimrehurek.com/gensim/auto_examples/index.html)
+[Topic Modeling with Gensim](https://www.machinelearningplus.com/nlp/topic-modeling-gensim-python/#1introduction)
+[Topic Modeling with mallet](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet)
